@@ -60,7 +60,7 @@ pickup: {
 location: {
     address: text
     name: string
-    creator: user
+    organization: organization
     timestamps
 }
 
@@ -76,6 +76,7 @@ pickup_status: {
 
 GET /users
 GET /organization/:id/pickups
+GET /organization/:id/locations
 
 POST /pickups 
 POST /locations
