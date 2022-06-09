@@ -26,7 +26,7 @@ Strech:
 
 ## Data Model (in progress):
 
-
+```
 organization: {
     id: integer
     name: string
@@ -69,6 +69,7 @@ pickup_status: {
     status: enum(0: pending, 1: in_progress, 2: complete)
     timestamps
 }
+```
 
 ## API Routes
 
