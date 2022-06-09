@@ -24,6 +24,7 @@ Strech:
 - Better location validation
 
 
+
 ## Data Model (in progress):
 
 ```
