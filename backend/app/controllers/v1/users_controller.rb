@@ -1,6 +1,7 @@
 class V1::UsersController < ApplicationController
 
     def index
-        render(json: {test: "Seeing if things are wired up"}, status: :ok)
+        users = User.all
+        render(json: users.as_json, status: :ok)
     end
 end
