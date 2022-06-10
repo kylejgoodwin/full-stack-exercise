@@ -1,8 +1,7 @@
 class V1::PickupsController < ApplicationController
-
   def index
-    pickups = Pickup.where( location: Location.where(organization_id: params[:organization_id]))
-    render(json: pickups.as_json, status: :ok)
+    pickups = Pickup.where(location: Location.where(organization_id: params[:organization_id]))
+    render(json: pickups, status: :ok)
   end
 
   def create
