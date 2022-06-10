@@ -1,5 +1,6 @@
 class Pickup < ApplicationRecord
   belongs_to :location
+
   has_many :pickup_statuses
 
   validates :datetime, presence: true

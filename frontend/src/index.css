@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+section{
+  padding: 0 1rem;
+}
+
+.user-select{
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 5px;
+  border: solid 1px lightgray
+}
+
+.pickup{
+  margin-bottom: .5rem;
+  padding: 1rem;
+  border-radius: 5px;
+  border: solid 1px lightgray
+}
+
+label span{
+  display: inline-block;
+  padding-bottom: 1rem;
+  min-width: 100px;
+}
+
+section{
+  margin-bottom: 2rem;
+}
+
