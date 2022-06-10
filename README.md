@@ -2,15 +2,19 @@
 
 Scafold for the structure of this app docker-compose setup + folder structure taken from https://github.com/aryrabelo/rails-react-docker-starter Modified to use a different version of rails because of that removed Gem issue.
 
+Prerequisites:
 1. Check if docker compose is installed ```docker-compose --version``` 
 2. If it is not installed, install docker desktop [here](https://www.docker.com/products/docker-desktop/), which includes compose
-2. Clone this repo and cd into the base folder where the docker-compose.yml file is located
-4. CD into ./frontend folder and run ```yarn install``` to install dependencies
+
+Bringing the services up:
+1. Clone this repo and cd into the base folder where the docker-compose.yml file is located
+2. CD into ./frontend folder and run ```yarn install``` to install dependencies
 3. In the main folder run ```docker-compose up -d```
 4. In a seperate terminal run ```docker-compose run backend rake db:create```
-3. Restart backend by running ```docker-compose up -d backend```
-4. You can check the status of the services by running ```docker ps -a```
-5. The frontend will be available at localhost:3000
+5. Seed the database with a some intial data ```docker-compose run backend rake db:seed```
+6. Restart backend by running ```docker-compose up -d backend```
+7. You can check the status of the services by running ```docker ps -a```
+8. The frontend will be available at localhost:3000
 
 If you need to interact with the rails application, you can SSH into the dockerized rails app by running ```docker-compose exec backend bash``` from there you have access to the familiar commands like ```rails console``` etc..
 
