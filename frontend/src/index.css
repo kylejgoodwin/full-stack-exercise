@@ -22,3 +22,10 @@ section{
   border-radius: 5px;
   border: solid 1px lightgray
 }
+
+.pickup{
+  margin-bottom: .5rem;
+  padding: 1rem;
+  border-radius: 5px;
+  border: solid 1px lightgray
+}
