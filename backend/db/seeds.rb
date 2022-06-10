@@ -25,6 +25,8 @@ when "development"
     office_two = Location.create!(organization: o_two, name: "Office 2", address: "102 Main St.")
 
     Pickup.create!(location: office_one, datetime: Time.now + 10.hours)
+    Pickup.create!(location: office_one, datetime: Time.now + 11.hours)
+    Pickup.create!(location: office_two, datetime: Time.now + 11.hours)
 
 
 

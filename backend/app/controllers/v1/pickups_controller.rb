@@ -6,12 +6,12 @@ class V1::PickupsController < ApplicationController
 
   def create
     pickup = Pickup.create!(create_pickup_params)
-    render(json: pickup.as_json, status: :ok)
+    render(json: pickup, status: :ok)
   end
 
   private
 
   def create_pickup_params
-    params.permit([:location_id, :datetime])
+    params.permit(:location_id, :datetime)
   end
 end
