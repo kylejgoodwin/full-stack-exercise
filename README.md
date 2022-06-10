@@ -47,7 +47,7 @@ user: {
 
 pickup: {
     id: integer,
-    date: datetime,
+    datetime: datetime,
     location: location
     timestamps
 
