@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import API from '../api-service'
 import useAsync from '../hooks/useAsync'
+import Pickups from './Pickups'
 
 export default function OrganizationView({ organizationId }) {
 
@@ -20,9 +21,7 @@ export default function OrganizationView({ organizationId }) {
     }
 
     return (<div>
-        <section>
-            <h2>Scheduled Pickups</h2>
-        </section>
+        <Pickups organizationId={organizationId} />
         <section>
             <h2>Add Pickup</h2>
             <form>
@@ -34,9 +33,7 @@ export default function OrganizationView({ organizationId }) {
                 <label>
                     Location :
                     <select>
-                        <option>Location 1</option>
-                        <option>Location 2</option>
-                        <option>Location 3</option>
+                    {locations && locations.map(location => <option>{location.name}</option>)}
                     </select>
                 </label>
                 <br />

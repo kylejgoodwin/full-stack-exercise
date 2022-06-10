@@ -19,4 +19,8 @@ export default class API{
         return request(`/organization/${organizationId}/locations`)
     }
 
+    static async getPickups(organizationId){
+        return request(`/organization/${organizationId}/pickups`)
+    }
+
 }
