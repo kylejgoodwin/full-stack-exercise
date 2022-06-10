@@ -1,18 +1,28 @@
 import React, { useEffect } from 'react'
+import useAsync from '../hooks/useAsync'
+import API from '../api-service'
 
-export default function UserList() {
+export default function UserList({ setOrganizationId }) {
 
-    useEffect(() => {
-        fetch("http://localhost:3001/v1/users")
-        .then( res => res.json())
-        .then( json => {
-            console.log(json)
-        })
-    }, [])
+    const { execute, status, error, value } = useAsync(API.getUsers);
+
 
     return (
         <div>
-            <p>Test</p>
+            {status === "success" && <>
+            <h2>Select a user</h2>
+            <div>{value && value.map(each => {
+
+                const { organization_id, name } = each;
+
+                const handleClick = () => {
+                    setOrganizationId(organization_id)
+                }
+
+                return <button onClick={handleClick} className='user-select'>{name}</button>
+            })}</div>
+            </>}
+            {status === "error" && <p> There was an error fetching the list of patients</p>}
         </div>
     )
 }
