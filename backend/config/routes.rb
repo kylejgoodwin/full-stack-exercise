@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :pickups, only: [:create]
 
     resources :organization, only: [] do
-      resources :locations, only: [:index]
+      resources :locations, only: [:index], controller: "locations"
       resources :pickups, only: [:index]
     end
   end
