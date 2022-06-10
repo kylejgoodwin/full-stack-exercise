@@ -24,6 +24,7 @@ Strech:
 - Better location validation
 
 
+
 ## Data Model (in progress):
 
 ```
@@ -46,7 +47,7 @@ user: {
 
 pickup: {
     id: integer,
-    date: datetime,
+    datetime: datetime,
     location: location
     timestamps
 
@@ -59,7 +60,7 @@ pickup: {
 location: {
     address: text
     name: string
-    creator: user
+    organization: organization
     timestamps
 }
 
@@ -75,6 +76,7 @@ pickup_status: {
 
 GET /users
 GET /organization/:id/pickups
+GET /organization/:id/locations
 
 POST /pickups 
 POST /locations
