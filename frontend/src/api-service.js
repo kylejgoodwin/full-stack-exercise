@@ -1,26 +1,30 @@
 const BASE_API_URL = "http://localhost:3001/v1"
 
-function request(path,method,body){
-    return fetch(BASE_API_URL + path, { method: method || "GET", body: JSON.stringify(body) || null})
-        .then(res =>res.json() )
-        .then( json => {
+function request(path, method, body) {
+    return fetch(BASE_API_URL + path, { method: method || "GET", body: JSON.stringify(body) || null, headers: {"Content-Type": "application/json"} })
+        .then(res => res.json())
+        .then(json => {
             return json;
         })
 }
 
 
-export default class API{
-    
-    static async getUsers(){
+export default class API {
+
+    static async getUsers() {
         return request("/users")
     }
 
-    static async getLocations(organizationId){
+    static async getLocations(organizationId) {
         return request(`/organization/${organizationId}/locations`)
     }
 
-    static async getPickups(organizationId){
+    static async getPickups(organizationId) {
         return request(`/organization/${organizationId}/pickups`)
+    }
+
+    static async addPickup(body) {
+        return request(`/pickups`, "POST", body)
     }
 
 }

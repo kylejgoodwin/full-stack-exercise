@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon'
 import React, { useState } from 'react'
 import API from '../api-service'
 import useAsync from '../hooks/useAsync'
@@ -17,33 +18,47 @@ export default function OrganizationView({ organizationId }) {
     })
 
     const handleChange = (e) => {
+        if(e.target.id === "datetime"){
+            setState({ ...state, [e.target.id]: DateTime.fromISO(e.target.value).startOf("day").toISO() })
+        }
+
         setState({ ...state, [e.target.id]: e.target.value })
     }
 
+    const addPickup = async () => {
+        return API.addPickup(state)
+    }
+
+    const { status: addPickupStatus, execute } = useAsync(addPickup, false)
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(state)
+        execute();
     }
 
     return (<div>
-        <Pickups organizationId={organizationId} />
+        <Pickups refresh={addPickupStatus === "success"} organizationId={organizationId} />
         <section>
             <h2>Add Pickup</h2>
             <form onSubmit={handleSubmit}>
                 <label>
-                   <span>Date :</span> 
+                    <span>Date :</span>
                     <input onChange={handleChange} type="date" id="datetime" />
                 </label>
                 <br />
                 <label>
                     <span>Location :</span>
                     <select onChange={handleChange} id="location_id">
-                    <option value="none" selected disabled hidden>Select an Option</option>
-                    {locations && locations.map(location => <option value={location.id}>{location.name}</option>)}
+                        <option value="none" selected disabled hidden>Select an Option</option>
+                        {locations && locations.map(location => <option value={location.id}>{location.name}</option>)}
                     </select>
                 </label>
                 <br />
                 <button disabled={!state.location_id || !state.datetime} >Submit</button>
+                <div>
+                    {addPickupStatus === "success" && <span>Successfully added the pickup</span>}
+                    {addPickupStatus === "error" && <span>Error adding the pickup</span>}
+                </div>
             </form>
         </section>
     </div>)
