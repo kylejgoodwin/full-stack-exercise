@@ -1,7 +1,28 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "V1::Users", type: :request do
   describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
+    before do
+      organization = Organization.create!(name: "Test")
+      user = User.create!(name: "Test User", organization: organization)
+      get "/v1/users"
+    end
+
+    it "returns success" do
+      expect(response).to have_http_status(:success)
+    end
+
+    it "JSON body response contains expected recipe attributes" do
+      json_response = JSON.parse(response.body)[0]
+      expect(json_response.keys).to match_array(["id", "created_at", "organization_id", "updated_at", "name"])
+    end
+
+
+    it "JSON body has a length of 1" do
+      json_response = JSON.parse(response.body)
+      expect(json_response.length).to equal(1)
+    end
+
+
   end
 end
