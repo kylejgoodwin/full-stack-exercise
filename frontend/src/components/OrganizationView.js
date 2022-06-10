@@ -13,31 +13,37 @@ export default function OrganizationView({ organizationId }) {
 
     const [state, setState] = useState({
         datetime: null,
-
+        location_id: null
     })
 
     const handleChange = (e) => {
         setState({ ...state, [e.target.id]: e.target.value })
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(state)
+    }
+
     return (<div>
         <Pickups organizationId={organizationId} />
         <section>
             <h2>Add Pickup</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>
-                    Date:
+                   <span>Date :</span> 
                     <input onChange={handleChange} type="date" id="datetime" />
                 </label>
                 <br />
                 <label>
-                    Location :
-                    <select>
-                    {locations && locations.map(location => <option>{location.name}</option>)}
+                    <span>Location :</span>
+                    <select onChange={handleChange} id="location_id">
+                    <option value="none" selected disabled hidden>Select an Option</option>
+                    {locations && locations.map(location => <option value={location.id}>{location.name}</option>)}
                     </select>
                 </label>
                 <br />
-                <button>Submit</button>
+                <button disabled={!state.location_id || !state.datetime} >Submit</button>
             </form>
         </section>
     </div>)

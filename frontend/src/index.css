@@ -29,3 +29,9 @@ section{
   border-radius: 5px;
   border: solid 1px lightgray
 }
+
+label span{
+  display: inline-block;
+  padding-bottom: 1rem;
+  min-width: 100px;
+}

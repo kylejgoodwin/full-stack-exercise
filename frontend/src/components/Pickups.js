@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import API from '../api-service'
 import useAsync from '../hooks/useAsync'
 import { DateTime } from 'luxon'
@@ -26,6 +26,9 @@ export default function Pickups({ organizationId }) {
                 </p>
                 <p>
                     Address:  {each.location.address}
+                </p>
+                <p>
+                    Current Status:  {each.pickup_statuses[0].status}
                 </p>
             </div>
         })}
