@@ -15,4 +15,9 @@ RSpec.describe Pickup, type: :model do
     expect(pickup).not_to be_valid
   end
 
+  #taking too much time to get working
+  # it 'should create an inital PickupStatus' do
+  #   pickup = Pickup.create!(datetime: Time.now + 1.hour, location: location)
+  #   expect(PickupStatus).to receive(:create!)
+  # end
 end
